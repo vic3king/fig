@@ -19,7 +19,6 @@ const connect = () =>
           useFindAndModify: true,
         })
         .then((res, err) => {
-          console.log(err, '>>>>>>>>>>>>>>>>');
           if (err) return reject(err);
           resolve();
         });

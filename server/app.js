@@ -49,10 +49,7 @@ app.all('*', (req, res) => {
 
 // connect to database server and start application server
 db.connect().then(async () => {
-  if (!module.parent) {
-    // eslint-disable-next-line no-console
-    app.listen(PORT, () => console.log('Application listening on port ', PORT));
-  }
+  app.listen(PORT, () => console.log('Application listening on port ', PORT));
 });
 
 export default app;

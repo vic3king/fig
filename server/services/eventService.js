@@ -20,7 +20,6 @@ export default class EventService extends BaseService {
    * @returns {Array} returns an array of events
    */
   async findRecommendedEvents(interests) {
-    console.log(interests, '>>>>>>Hmm');
     return this.findAll({
       category: { $in: interests },
     });
