@@ -26,7 +26,7 @@ export default class BaseService {
    * @returns {object} found object
    */
   async find(missingObject) {
-    return this.model.findOne(missingObject);
+    return this.model.findOne(missingObject).sort({ createdAt: -1 });
   }
 
   /**
@@ -35,7 +35,7 @@ export default class BaseService {
    * @returns {object} found object
    */
   async findAll(missingObject) {
-    return this.model.find(missingObject);
+    return this.model.find(missingObject).sort({ createdAt: -1 });
   }
 
   /**

@@ -24,7 +24,7 @@ const seeds = async () => {
     title: 'New event one',
     description: 'My shiny new event',
     address: 'No 1 city of power avenue off pedro road',
-    tags: ['advertising', 'investment'],
+    category: 'investment',
   });
 
   const event2 = new Event({
@@ -33,7 +33,7 @@ const seeds = async () => {
     title: 'New event two',
     description: 'My shiny new event',
     address: 'No 1 city of power avenue off pedro road',
-    tags: ['fintech', 'e-commerce', 'ride-hailing'],
+    category: 'fintech',
   });
 
   await user1.save();

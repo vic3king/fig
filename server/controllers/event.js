@@ -12,15 +12,21 @@ export default class EventController {
    * @returns {object} a new event
    */
   static async create(req, res) {
-    const { body } = req;
+    try {
+      const { body } = req;
+      const event = await eventService.create(body);
 
-    const event = await eventService.create(body);
-
-    return res.status(200).json({
-      status: true,
-      message: 'Event created successfully',
-      event,
-    });
+      return res.status(200).json({
+        status: true,
+        message: 'Event created successfully',
+        event,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: false,
+        message: error.message,
+      });
+    }
   }
 
   /**
@@ -31,12 +37,19 @@ export default class EventController {
    * @returns {object} returns an array of events
    */
   static async events(req, res) {
-    const events = await eventService.findAll({});
+    try {
+      const events = await eventService.findAll({});
 
-    return res.status(200).json({
-      status: true,
-      message: 'events retrieved successfully',
-      events,
-    });
+      return res.status(200).json({
+        status: true,
+        message: 'events retrieved successfully',
+        events,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: false,
+        message: error.message,
+      });
+    }
   }
 }

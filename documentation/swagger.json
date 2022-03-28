@@ -179,12 +179,12 @@
             "required": true,
             "type": "string"
           },{
-            "name": "tags",
+            "name": "category",
             "in": "formData",
-            "description": "tags",
+            "description": "category",
             "required": true,
             "type": "string"
-          },
+          }
         ],
         "responses": {
           "200": {

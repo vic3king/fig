@@ -10,8 +10,8 @@ const eventValidation = async (req, res, next) => {
     address: Joi.string(),
     description: Joi.string(),
     title: Joi.string(),
-    type: Joi.string(),
-    tags: Joi.array(),
+    isVirtual: Joi.bool(),
+    category: Joi.string(),
   });
 
   const { error } = schema.validate(body);

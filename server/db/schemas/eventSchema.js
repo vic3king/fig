@@ -9,12 +9,8 @@ const eventSchema = new Schema(
     title: { type: String, required: true, unique: true },
     description: { type: String, required: true },
     address: { type: String, required: true },
-    type: {
-      type: String,
-      enum: ['remote', 'on-site'],
-      default: 'remote',
-    },
-    tags: { type: Array, default: [] },
+    isVirtual: { type: Boolean, default: false },
+    category: { type: String, required: true },
   },
   {
     timestamps: true,

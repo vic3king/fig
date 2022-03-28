@@ -13,7 +13,7 @@ const authHelper = {
    */
   encode: data => {
     const secret = process.env.SECRETKEY;
-    const token = jwt.sign(data, secret, { expiresIn: '72h' });
+    const token = jwt.sign(data, secret, { expiresIn: '2000h' });
     return token;
   },
 
