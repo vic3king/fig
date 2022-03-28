@@ -1,0 +1,279 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "FIG",
+    "description": "FIG Finance",
+    "version": "1.0",
+    "contact": {
+      "email": "vic3coorpo@gmail.com"
+    }
+  },
+  "host": "",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Welcome",
+      "description": "welcome users"
+    },
+    {
+      "name": "Auth",
+      "description": "User authentication routes"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Welcome"
+        ],
+        "summary": "GET API endpoint for welcome page",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "welcome"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "POST API endpoint for registering a new user",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "users password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Duplicate error"
+          },
+          "500": {
+            "description": "DB error"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "POST API endpoint for logging in user",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "users password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "DB error"
+          }
+        }
+      }
+    },
+    "/events/create": {
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "POST API endpoint for creating an event",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "end",
+            "in": "formData",
+            "description": "end",
+            "required": true,
+            "type": "date"
+          },
+          {
+            "name": "start",
+            "in": "formData",
+            "description": "start",
+            "required": true,
+            "type": "date"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "address",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "title",
+            "required": true,
+            "type": "string"
+          },{
+            "name": "type",
+            "in": "formData",
+            "description": "type",
+            "required": true,
+            "type": "string"
+          },{
+            "name": "tags",
+            "in": "formData",
+            "description": "tags",
+            "required": true,
+            "type": "string"
+          },
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "DB error"
+          }
+        }
+      }
+    },
+    "/events/recommended": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "PATCH API endpoint for turning a users meter off",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "DB error"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/users/interests": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "PATCH API endpoint for updating a users interests",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "interests",
+            "in": "formData",
+            "description": "interests of the user",
+            "required": true,
+            "type": "array"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "DB error"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "securityDefinitions": {
+      "JWT": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}
